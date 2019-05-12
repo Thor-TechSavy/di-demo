@@ -1,11 +1,13 @@
 package guru.springframework.config;
 
 import guru.springframework.propertyexamplebeans.FakeDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
 
 /**
  * Created by shivam (techSavyThor) on 05/13/2019
@@ -21,10 +23,13 @@ public class PropertyConfig {
     @Value("${dburl}")
     String url;
 
+    @Autowired
+    Environment env;
+
     @Bean
     public FakeDataSource fakeDataSource(){
         FakeDataSource fakeDataSource=new FakeDataSource();
-        fakeDataSource.setUsername(user);
+        fakeDataSource.setUsername(env.getProperty("USERNAME"));
         fakeDataSource.setPassword(password);
         fakeDataSource.setDburl(url);
         return  fakeDataSource;
