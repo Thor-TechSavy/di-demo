@@ -2,26 +2,21 @@ package guru.springframework.config;
 
 import guru.springframework.propertyexamplebeans.FakeDataSource;
 import guru.springframework.propertyexamplebeans.FakeJmsBroker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 
 /**
  * Created by shivam (techSavyThor) on 05/13/2019
  */
 @Configuration
 //@PropertySource({"classpath:dataSource.properties","classpath:jms.properties"})
-@PropertySources({
+/*@PropertySources({
         @PropertySource("classpath:dataSource.properties"),@PropertySource("classpath:jms.properties")
-})
+})*/
 public class PropertyConfig {
 
-    @Value("${username}")
+    @Value("${dataSourceusername}")
     String user;
     @Value("${password}")
     String password;
@@ -35,13 +30,13 @@ public class PropertyConfig {
     @Value("${jms.url}")
     String jmsUrl;
 
-    @Autowired
-    Environment env;
+ /*   @Autowired
+    Environment env;*/
 
     @Bean
     public FakeDataSource fakeDataSource(){
         FakeDataSource fakeDataSource=new FakeDataSource();
-        fakeDataSource.setUsername(env.getProperty("USERNAME"));
+        fakeDataSource.setUsername(user);
         fakeDataSource.setPassword(password);
         fakeDataSource.setDburl(url);
         return  fakeDataSource;
@@ -56,10 +51,10 @@ public class PropertyConfig {
         return  jmsBroker;
     }
 
-    @Bean
+/*    @Bean
     public static PropertySourcesPlaceholderConfigurer properties(){
         PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer=new PropertySourcesPlaceholderConfigurer();
         return propertySourcesPlaceholderConfigurer;
 
-    }
+    }*/
 }
