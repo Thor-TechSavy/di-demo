@@ -1,0 +1,13 @@
+dataSourceusername: dataSource
+password: dataSourcepassword
+dataSourceUrl: dataSourceUrl
+
+jms:
+  username: JMS
+  password: jmsPassword
+  url: jmsUrl
+---
+spring:
+    profiles: de
+jms:
+  username: JMS in german

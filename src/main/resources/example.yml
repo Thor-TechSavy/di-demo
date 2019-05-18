@@ -1,0 +1,33 @@
+# this is a yaml file
+name: Shivam
+name: #comment
+  -abcd
+  -efgh
+  -ijkl
+
+pound_sign: "#"
+
+book:
+    author: Joe Buck
+    publisher: random house
+
+truth: yes
+
+another_truth: True
+
+more_true: true
+
+false: no #No,false,FALSE
+
+string_vale: "This is it's quote"
+
+colon_string: "my course: one two three"
+include_new_lines: |
+  jdnakkdn dajdbaj jdbajd
+  adbakd bajdbakd
+  dbakdadu hihidhi
+
+ignore_new_lines: >
+    this is
+    just one long
+    string
